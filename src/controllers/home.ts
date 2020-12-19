@@ -2,7 +2,7 @@ import { Controller, Get, Req, Res } from '@nestjs/common'
 import { Render } from './../frameworks/render'
 import { HomePresenter } from './../presenters/home'
 import { Request, Response } from 'express'
-@Controller('/')
+@Controller('/*')
 export class HomeController {
   constructor(private render: Render, private homePresenter: HomePresenter) {}
 
