@@ -4,7 +4,7 @@ const { serverPlugins } = require('./partials/plugins')
 const { serverRules } = require('./partials/rules')
 
 module.exports = {
-  entry: path.join(__dirname, '..', 'entry', 'server.js'),
+  entry: path.join(__dirname, '..', 'resources', 'entry', 'server.js'),
   target: 'node',
   output: {
     filename: 'server.bundle.js',

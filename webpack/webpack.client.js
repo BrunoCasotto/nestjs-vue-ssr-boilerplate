@@ -5,7 +5,7 @@ const { clientRules } = require('./partials/rules')
 
 module.exports = {
   entry: [
-    path.join(__dirname, '..', 'entry', 'client.js'),
+    path.join(__dirname, '..', 'resources', 'entry', 'client.js'),
     path.join(__dirname, '..', 'resources', 'images', 'favicon.ico'),
   ],
   module: {
