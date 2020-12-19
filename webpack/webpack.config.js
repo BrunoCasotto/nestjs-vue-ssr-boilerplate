@@ -1,5 +1,5 @@
+const path = require('path')
 const merge = require('webpack-merge')
-
 const serverConfig = require('./webpack.server')
 const clientConfig = require('./webpack.client')
 
@@ -13,7 +13,8 @@ const config = {
   watch: isProd ? false : true,
   devtool: isProd? false : 'source-map',
   output: {
-    publicPath: '/static/',
+    publicPath: '/',
+    path: path.join(__dirname, '..', 'public'),
   },
   resolve: {
     alias,
