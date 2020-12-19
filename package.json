@@ -9,8 +9,8 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
-    "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
+    "start:dev": "concurrently \"npm run client:watch\" \"nest start --watch\"",
+    "start:debug": "concurrently \"npm run client:watch\" \"nest start --debug --watch\"",
     "start:prod": "node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
@@ -19,7 +19,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "client:watch": "cross-env NODE_ENV=development webpack --config ./webpack/webpack.config.js",
-    "client:build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.js"
+    "client:build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.js",
+    "watch": "concurrently \"npm run client:watch\" \"npm run start:dev\""
   },
   "dependencies": {
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
@@ -56,6 +57,7 @@
     "@typescript-eslint/parser": "^4.6.1",
     "autoprefixer": "9.4.5",
     "babel-loader": "8.0.5",
+    "concurrently": "^5.3.0",
     "cross-env": "^5.2.0",
     "css-loader": "2.1.0",
     "eslint": "^7.12.1",
@@ -78,7 +80,7 @@
     "typescript": "^4.0.5",
     "vue-loader": "15.7.0",
     "vue-style-loader": "^4.1.2",
-    "vue-template-compiler": "2.6.11",
+    "vue-template-compiler": "2.6.12",
     "webpack": "^4.42.0",
     "webpack-cli": "3.3.0",
     "webpack-merge": "4.2.1",

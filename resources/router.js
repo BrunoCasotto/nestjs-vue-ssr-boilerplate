@@ -2,10 +2,10 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 Vue.use(Router)
-const Home = () => import('@modules/Home.vue')
-const Search = () => import('@modules/Search.vue')
-const Product = () => import('@modules/Product.vue')
-const NotFound = () => import('@modules/NotFound.vue')
+const Home = () => import('@pages/Home.vue')
+const Search = () => import('@pages/Search.vue')
+const Product = () => import('@pages/Product.vue')
+const NotFound = () => import('@pages/NotFound.vue')
 
 export const createRouter = () => {
   return new Router({
