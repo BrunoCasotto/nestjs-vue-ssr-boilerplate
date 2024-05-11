@@ -17,7 +17,11 @@ module.exports = {
       {
         test: /\.scss$/,
         use: isProd ?
-          basicScssLoader : basicScssLoaderInline,
+          [
+            'css-loader',
+            'postcss-loader',
+            'sass-loader'
+          ] : basicScssLoaderInline,
       },
     ],
   },

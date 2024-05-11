@@ -17,7 +17,9 @@ module.exports = {
         test: /\.scss$/,
         use: isProd ? [
           MiniCssExtractPlugin.loader,
-          ...basicScssLoader
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
         ] : basicScssLoaderInline,
       },
     ],
