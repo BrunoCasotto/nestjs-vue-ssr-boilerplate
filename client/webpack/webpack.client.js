@@ -1,7 +1,9 @@
 const path = require('path')
 const optimization = require('./partials/optimization')
 const { clientPlugins } = require('./partials/plugins')
-const { clientRules } = require('./partials/rules')
+const { baseRules, basicScssLoader, basicScssLoaderInline } = require('./partials/rules')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: [
@@ -9,7 +11,16 @@ module.exports = {
     path.join(__dirname, '..', 'resources', 'images', 'favicon.ico'),
   ],
   module: {
-    rules: clientRules,
+    rules: [
+      ...baseRules,
+      {
+        test: /\.scss$/,
+        use: isProd ? [
+          MiniCssExtractPlugin.loader,
+          ...basicScssLoader
+        ] : basicScssLoaderInline,
+      },
+    ],
   },
   plugins: clientPlugins,
   optimization,

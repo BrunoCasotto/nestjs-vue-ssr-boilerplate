@@ -1,6 +1,3 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const isProd = process.env.NODE_ENV === 'production'
-
 const baseRules = [
   {
     test: /\.vue$/,
@@ -46,34 +43,9 @@ const basicScssLoaderInline = [
   ...basicScssLoader
 ]
 
-// server configurations
-const scssServerLoader = isProd ?
-  basicScssLoader : basicScssLoaderInline
-
-
-const serverRules = [
-  ...baseRules,
-  {
-    test: /\.scss$/,
-    use: scssServerLoader,
-  },
-]
-
- // client configurations
-const scssClientLoader = isProd ? [
-  MiniCssExtractPlugin.loader,
-  ...basicScssLoader
-] : basicScssLoaderInline
-
-const clientRules = [
-  ...baseRules,
-  {
-    test: /\.scss$/,
-    use: scssClientLoader,
-  },
-]
 
 module.exports = {
-  serverRules,
-  clientRules
+  baseRules,
+  basicScssLoader,
+  basicScssLoaderInline,
 }

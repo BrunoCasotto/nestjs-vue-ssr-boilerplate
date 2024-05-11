@@ -1,7 +1,8 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
-const { serverPlugins } = require('./partials/plugins')
-const { serverRules } = require('./partials/rules')
+const { baseRules, basicScssLoader, basicScssLoaderInline } = require('./partials/rules')
+const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
   entry: path.join(__dirname, '..', 'resources', 'entry', 'server.js'),
@@ -11,10 +12,19 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   module: {
-    rules: serverRules,
+    rules: [
+      ...baseRules,
+      {
+        test: /\.scss$/,
+        use: isProd ?
+          basicScssLoader : basicScssLoaderInline,
+      },
+    ],
   },
   externals: nodeExternals({
     whitelist: /\.css$/,
   }),
-  plugins: serverPlugins,
+  plugins: [
+    new VueSSRServerPlugin(),
+  ],
 }
