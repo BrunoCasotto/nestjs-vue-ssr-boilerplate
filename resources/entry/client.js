@@ -1,4 +1,3 @@
-import 'core-js/stable/promise'
 import { createApp } from './../app'
 const { app, store, router } = createApp()
 
