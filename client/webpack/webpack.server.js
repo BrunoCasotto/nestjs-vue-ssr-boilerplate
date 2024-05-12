@@ -14,23 +14,19 @@ module.exports = {
   entry: path.join(__dirname, '..', 'resources', 'entry', 'server.js'),
   target: 'node',
   output: {
-    filename: 'server.bundle.js',
-    libraryTarget: 'commonjs2',
+    library: {
+      name: 'server.bundle.js',
+      type: 'umd',
+    }
+    // filename: 'server.bundle.js',
+    // libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
       ...baseRules,
       {
         test: /\.scss$/,
-        use: isProd ?
-          [
-            'css-loader',
-            'postcss-loader',
-            'sass-loader'
-          ] : [
-            'vue-style-loader',
-            ...basicScssLoader
-          ],
+        use: 'null-loader',
       },
     ],
   },
