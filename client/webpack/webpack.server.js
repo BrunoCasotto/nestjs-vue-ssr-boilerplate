@@ -1,8 +1,14 @@
 const path = require('path')
 const nodeExternals = require('webpack-node-externals')
-const { baseRules, basicScssLoader, basicScssLoaderInline } = require('./partials/rules')
+const { baseRules } = require('./partials/rules')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const isProd = process.env.NODE_ENV === 'production'
+
+const basicScssLoader = [
+  'css-loader',
+  'postcss-loader',
+  'sass-loader'
+]
 
 module.exports = {
   entry: path.join(__dirname, '..', 'resources', 'entry', 'server.js'),
@@ -21,7 +27,10 @@ module.exports = {
             'css-loader',
             'postcss-loader',
             'sass-loader'
-          ] : basicScssLoaderInline,
+          ] : [
+            'vue-style-loader',
+            ...basicScssLoader
+          ],
       },
     ],
   },

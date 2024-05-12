@@ -32,20 +32,6 @@ const baseRules = [
   },
 ]
 
-const basicScssLoader = [
-  'css-loader',
-  'postcss-loader',
-  'sass-loader'
-]
-
-const basicScssLoaderInline = [
-  'vue-style-loader',
-  ...basicScssLoader
-]
-
-
 module.exports = {
   baseRules,
-  basicScssLoader,
-  basicScssLoaderInline,
 }

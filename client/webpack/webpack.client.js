@@ -1,9 +1,14 @@
 const path = require('path')
 const optimization = require('./partials/optimization')
 const { clientPlugins } = require('./partials/plugins')
-const { baseRules, basicScssLoader, basicScssLoaderInline } = require('./partials/rules')
+const { baseRules } = require('./partials/rules')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const isProd = process.env.NODE_ENV === 'production'
+const basicScssLoader = [
+  'css-loader',
+  'postcss-loader',
+  'sass-loader'
+]
 
 module.exports = {
   entry: [
@@ -20,7 +25,7 @@ module.exports = {
           'css-loader',
           'postcss-loader',
           'sass-loader'
-        ] : basicScssLoaderInline,
+        ] : [ 'vue-style-loader', ...basicScssLoader ],
       },
     ],
   },
