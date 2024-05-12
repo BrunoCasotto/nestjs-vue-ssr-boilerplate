@@ -10,7 +10,7 @@ export const createRouter = () => {
     mode: 'history',
     fallback: false,
     routes: [
-      { path: '*', component: Home },
+      { path: '/', component: Home },
     ]
   })
 }
