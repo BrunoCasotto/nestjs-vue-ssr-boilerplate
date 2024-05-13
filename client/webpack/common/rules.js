@@ -1,4 +1,4 @@
-const baseRules = [
+module.exports = [
   {
     test: /\.vue$/,
     exclude: /node_modules/,
@@ -31,7 +31,3 @@ const baseRules = [
     },
   },
 ]
-
-module.exports = {
-  baseRules,
-}

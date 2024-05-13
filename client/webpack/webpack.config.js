@@ -1,10 +1,8 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
-const serverConfig = require('./webpack.server')
-const clientConfig = require('./webpack.client')
-
-const { plugins } = require('./partials/plugins')
-const alias = require('./partials/alias')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const serverConfig = require('./server/webpack.server')
+const clientConfig = require('./client/webpack.client')
 
 const isProd = process.env.NODE_ENV === 'production'
 
@@ -17,9 +15,16 @@ const config = {
     path: path.join(__dirname, '..', 'public'),
   },
   resolve: {
-    alias,
+    alias: {
+      '@components': path.join('..', 'resources', 'components'),
+      '@images': path.join('..', 'resources', 'images'),
+      '@pages': path.join('..', 'resources', 'pages'),
+      '@public': path.join('..', 'public'),
+    },
   },
-  plugins,
+  plugins: [
+    new VueLoaderPlugin(),
+  ],
 }
 
 module.exports = [
