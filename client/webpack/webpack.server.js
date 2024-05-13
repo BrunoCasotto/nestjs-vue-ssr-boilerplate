@@ -4,22 +4,12 @@ const { baseRules } = require('./partials/rules')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 const isProd = process.env.NODE_ENV === 'production'
 
-const basicScssLoader = [
-  'css-loader',
-  'postcss-loader',
-  'sass-loader'
-]
-
 module.exports = {
   entry: path.join(__dirname, '..', 'resources', 'entry', 'server.js'),
   target: 'node',
   output: {
-    library: {
-      name: 'server.bundle.js',
-      type: 'umd',
-    }
-    // filename: 'server.bundle.js',
-    // libraryTarget: 'commonjs2',
+    filename: 'server.bundle.js',
+    libraryTarget: 'commonjs2',
   },
   module: {
     rules: [
