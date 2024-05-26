@@ -1,5 +1,8 @@
+const postcssPresetEnv = require('postcss-preset-env')
 module.exports = {
-  plugins: {
-    autoprefixer: { browsers: ['last 2 versions', 'iOS >= 8'] },
-  },
+  plugins: [
+    [
+      postcssPresetEnv(),
+    ],
+  ],
 }
