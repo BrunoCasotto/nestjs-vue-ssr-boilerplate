@@ -8,8 +8,8 @@ import { join } from 'path';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      // serveRoot: '/static',
-      rootPath: join(__dirname, '..', 'client', 'public')
+      serveRoot: '/static',
+      rootPath: join(__dirname, '..', '..', 'client', 'dist')
     })
   ],
   controllers: [HomeController],

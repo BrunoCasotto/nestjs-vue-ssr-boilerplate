@@ -5,8 +5,8 @@ const path = require('path')
 const templatePath = path.join(__dirname, '..', 'views', 'template.html')
 const template = require('fs').readFileSync(templatePath,'utf-8')
 
-const clientManifest = require('./../../client/public/vue-ssr-client-manifest.json')
-const serverBundle = require('./../../client/public/vue-ssr-server-bundle.json')
+const clientManifest = require('./../../../client/dist/vue-ssr-client-manifest.json')
+const serverBundle = require('./../../../client/dist/vue-ssr-server-bundle.json')
 
 Injectable()
 export class Render {

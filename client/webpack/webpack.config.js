@@ -11,8 +11,8 @@ const config = {
   watch: isProd ? false : true,
   devtool: isProd? false : 'source-map',
   output: {
-    publicPath: '/',
-    path: path.join(__dirname, '..', 'public'),
+    publicPath: '/static',
+    path: path.join(__dirname, '..', 'dist'),
   },
   resolve: {
     alias: {
