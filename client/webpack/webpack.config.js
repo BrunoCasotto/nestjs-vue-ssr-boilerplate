@@ -1,6 +1,7 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+
 const serverConfig = require('./webpack.server')
 const clientConfig = require('./webpack.client')
 
