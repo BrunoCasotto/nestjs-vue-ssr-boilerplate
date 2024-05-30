@@ -1,6 +1,7 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const CopyPlugin = require("copy-webpack-plugin");
 
 const serverConfig = require('./webpack.server')
 const clientConfig = require('./webpack.client')
@@ -12,7 +13,7 @@ const config = {
   watch: isProd ? false : true,
   devtool: isProd? false : 'source-map',
   output: {
-    publicPath: '/static',
+    publicPath: '/static/',
     path: path.join(__dirname, '..', 'dist'),
   },
   module: {
@@ -33,7 +34,7 @@ const config = {
         test: /\.(jpg|png|svg|ico)$/,
         type: 'asset/resource',
         generator: {
-          filename: 'images/[hash][ext]'
+          filename: 'images/[name][ext]'
         }
       },
     ]
@@ -48,6 +49,11 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
+    new CopyPlugin({
+      patterns: [
+        { from: 'public/**/*', to: '.' },
+      ],
+    }),
   ],
 }
 
