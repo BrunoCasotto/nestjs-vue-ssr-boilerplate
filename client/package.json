@@ -2,10 +2,11 @@
   "name": "nest-typescript-starter-client",
   "private": true,
   "version": "1.0.0",
-  "description": "Nest TypeScript starter repository",
+  "description": "",
   "license": "MIT",
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=development webpack --config ./webpack/webpack.config.js",
+    "build:lib": "vue-ssr-builder build",
+    "dev": "cross-env NODE_ENV=development webpack --config ./webpack/webpack.config.js",
     "build": "cross-env NODE_ENV=production webpack --config ./webpack/webpack.config.js"
   },
   "dependencies": {
