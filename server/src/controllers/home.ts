@@ -11,7 +11,11 @@ export class HomeController {
   getHome(@Req() request: Request, @Res() response: Response) {
     const { url } = request
     const renderer = this.render.getRenderer()
-    const context = this.homePresenter.getContext(url, {})
+    const context = this.homePresenter.getContext(url, {
+      Store: {
+        casotto: "casotto"
+      }
+    })
 
     renderer.renderToString(context, (error, html) => {
       if (error) {

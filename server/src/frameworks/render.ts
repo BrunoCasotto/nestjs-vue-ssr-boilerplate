@@ -23,7 +23,9 @@ export class Render {
         maxAge: 1000 * 15
       }),
       template,
+      runInNewContext: false,
       clientManifest,
+      inject: false,
     })
 
     return renderer
